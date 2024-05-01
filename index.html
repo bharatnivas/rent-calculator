@@ -56,7 +56,10 @@
 
       // Display the results
       const resultsDiv = document.getElementById('results');
-      resultsDiv.innerHTML = `<h2>Rent Per Person:</h2><p>${rentPerPerson.toFixed(2)} INR</p>`;
+      resultsDiv.innerHTML = `<h2>Rent Per Person:</h2>`;
+      for (let i = 1; i <= numberOfPersons; i++) {
+        resultsDiv.innerHTML += `<p>Person ${("0" + i).slice(-2)}: ${rentPerPerson.toFixed(2)} INR</p>`;
+      }
     });
   </script>
 </body>
