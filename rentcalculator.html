@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent Calculator</title>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rent Calculator</h1>
+    <form id="rentForm">
+      <label for="rentAmount">Rent Amount (in Indian Rupee):</label>
+      <input type="number" id="rentAmount" min="0" required><br><br>
+      <label for="numberOfPersons">Number of Persons:</label>
+      <input type="number" id="numberOfPersons" min="1" required><br><br>
+      <button type="submit">Calculate</button>
+    </form>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    document.getElementById('rentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get the values from the form
+      const rentAmount = parseFloat(document.getElementById('rentAmount').value);
+      const numberOfPersons = parseInt(document.getElementById('numberOfPersons').value);
+
+      // Calculate the rent per person
+      const rentPerPerson = rentAmount / numberOfPersons;
+
+      // Display the results
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = `<h2>Rent Per Person:</h2><p>${rentPerPerson.toFixed(2)} INR</p>`;
+    });
+  </script>
+</body>
+</html>
